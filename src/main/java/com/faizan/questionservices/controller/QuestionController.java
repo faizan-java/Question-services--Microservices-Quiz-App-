@@ -3,7 +3,9 @@ import com.faizan.questionservices.model.Question;
 import com.faizan.questionservices.model.QuestionWrapper;
 import com.faizan.questionservices.model.Response;
 import com.faizan.questionservices.services.QuestionService;
+import org.springframework.core.env.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,8 @@ import java.util.List;
 public class QuestionController {
     @Autowired
     private QuestionService questionService;
+    @Autowired
+    Environment environment;
     @GetMapping("allquestions")
     public ResponseEntity<List<Question>> getQuestionName(){
         return questionService.getAllQuestion();
@@ -35,12 +39,13 @@ public class QuestionController {
     // getQuestion (questionId)
     @PostMapping("getQuestions")
     public ResponseEntity<List<QuestionWrapper>> getAllQuestions(@RequestBody List<Integer> questionIds){
+        System.out.println(environment.getProperty("local.server.port"));
         return questionService.getQuestionsFromId(questionIds);
     }
     // getScores
     @PostMapping("getScores")
+
     public ResponseEntity<Integer> getScores(@RequestBody List<Response> responses){
         return questionService.getScores(responses);
     }
-
 }
