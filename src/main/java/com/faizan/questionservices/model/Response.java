@@ -1,4 +1,4 @@
-package com.faizan.quizapp.model;
+package com.faizan.questionservices.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

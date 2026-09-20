@@ -1,4 +1,4 @@
-package com.faizan.quizapp.model;
+package com.faizan.questionservices.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
